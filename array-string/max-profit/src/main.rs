@@ -1,18 +1,19 @@
 fn main() {
     pub fn max_profit(prices: Vec<i32>) -> i32 {
         let mut abs_max: i32 = 0;
-
         let mut max = prices[0];
         let mut min = prices[0];
 
         for val in prices {
-            if val < min {
 
+            if val < min { 
+                // gather max profit of last window
+                // save if new absolute maximum
+                // & reset
                 let calc = max - min;
                 if abs_max < calc {
                     abs_max = calc;
                 }
-
                 min = val;
                 max = val;
             }
@@ -21,6 +22,8 @@ fn main() {
             }
         }
 
+        // gather value at end, doesn't happen in loop
+        // could be improved?
         let calc = max - min;
         if abs_max < calc {
             abs_max = calc;
